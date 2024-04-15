@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaApp", "PrimaApp\PrimaApp.csproj", "{6F2FD854-9070-4883-8532-4E22AE1155F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimaApp", "PrimaApp\PrimaApp.csproj", "{6F2FD854-9070-4883-8532-4E22AE1155F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondaApp", "SecondaApp\SecondaApp.csproj", "{501FCC4B-C884-4F41-82A7-C8F33D140C3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaApp", "SecondaApp\SecondaApp.csproj", "{501FCC4B-C884-4F41-82A7-C8F33D140C3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerzaApp", "TerzaApp\TerzaApp.csproj", "{F0EF9D63-1E48-4855-99F1-DA00921F51DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerzaApp", "TerzaApp\TerzaApp.csproj", "{F0EF9D63-1E48-4855-99F1-DA00921F51DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartaApp", "QuartaApp\QuartaApp.csproj", "{0E4DDD81-9EA6-4850-96E8-1495F1C5A0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuintaApp", "QuintaApp\QuintaApp.csproj", "{B3C1CEE1-02E3-448E-AF4E-66030247B8C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{F0EF9D63-1E48-4855-99F1-DA00921F51DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0EF9D63-1E48-4855-99F1-DA00921F51DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0EF9D63-1E48-4855-99F1-DA00921F51DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E4DDD81-9EA6-4850-96E8-1495F1C5A0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4DDD81-9EA6-4850-96E8-1495F1C5A0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4DDD81-9EA6-4850-96E8-1495F1C5A0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4DDD81-9EA6-4850-96E8-1495F1C5A0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C1CEE1-02E3-448E-AF4E-66030247B8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C1CEE1-02E3-448E-AF4E-66030247B8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C1CEE1-02E3-448E-AF4E-66030247B8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C1CEE1-02E3-448E-AF4E-66030247B8C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
