@@ -8,6 +8,16 @@ namespace SettimaApp.strutture
 {
     public class SchedaContatto
     {
+        public string nome = "";
+        public string cognome = "";
+        public string email = "";
+        public string telefono = "";
+
+        public SchedaContatto()
+        { 
+        
+        }
+
         public SchedaContatto(string nome, string cognome, string email, string telefono)
         {
             this.nome = nome;
@@ -16,14 +26,18 @@ namespace SettimaApp.strutture
             this.telefono = telefono;
         }
 
-        public string nome;
-        public string cognome;
-        public string email;
-        public string telefono;
+        public SchedaContatto(string riga)
+        {
+            string[] pezzi = riga.Split('\t');
+            this.nome = pezzi[0];
+            this.cognome = pezzi[1];
+            this.email = pezzi[2];
+            this.telefono = pezzi[3];
+        }
 
         public override string ToString()
         {
-            return $"contatto: {nome} {cognome}";
+            return $"{nome}\t{cognome}\t{email}\t{telefono}";
         }
 
     }

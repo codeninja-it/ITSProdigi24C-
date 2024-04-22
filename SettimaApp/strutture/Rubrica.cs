@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace SettimaApp.strutture
 {
@@ -16,6 +17,10 @@ namespace SettimaApp.strutture
         {
             this.nome = nome;
             contatti = new List<SchedaContatto>();
+            if (File.Exists($"{nome}.csv"))
+            {
+                Apri();
+            }
         }
 
         // "{this.nome}.txt"
@@ -32,11 +37,11 @@ namespace SettimaApp.strutture
         public void Apri()
         {
             string buffer = File.ReadAllText($"{this.nome}.csv");
+            buffer = buffer.Trim();
             string[] righe = buffer.Split('\n');
             foreach(string riga in righe)
             {
-                string[] campi = riga.Split('\t');
-                contatti.Add( new SchedaContatto(campi[0], campi[1], campi[2], campi[3]) );
+                contatti.Add( new SchedaContatto(riga) );
             }
         }
     }

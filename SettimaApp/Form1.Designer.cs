@@ -30,6 +30,7 @@
         {
             lstContatti = new ListBox();
             btnAggiungi = new Button();
+            chkCancella = new CheckBox();
             SuspendLayout();
             // 
             // lstContatti
@@ -55,23 +56,36 @@
             btnAggiungi.UseVisualStyleBackColor = true;
             btnAggiungi.Click += btnAggiungi_Click;
             // 
+            // chkCancella
+            // 
+            chkCancella.AutoSize = true;
+            chkCancella.Location = new Point(12, 18);
+            chkCancella.Name = "chkCancella";
+            chkCancella.Size = new Size(131, 36);
+            chkCancella.TabIndex = 2;
+            chkCancella.Text = "cancella";
+            chkCancella.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(695, 530);
+            Controls.Add(chkCancella);
             Controls.Add(btnAggiungi);
             Controls.Add(lstContatti);
             Name = "Form1";
             Text = "Rubrica";
+            Activated += Form1_Activated;
             FormClosed += Form1_FormClosed;
-            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ListBox lstContatti;
         private Button btnAggiungi;
+        private CheckBox chkCancella;
     }
 }
