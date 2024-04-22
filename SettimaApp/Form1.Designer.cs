@@ -42,13 +42,14 @@
             lstContatti.Name = "lstContatti";
             lstContatti.Size = new Size(671, 454);
             lstContatti.TabIndex = 0;
+            lstContatti.SelectedIndexChanged += lstContatti_SelectedIndexChanged;
             // 
             // btnAggiungi
             // 
             btnAggiungi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAggiungi.Location = new Point(586, 12);
+            btnAggiungi.Location = new Point(548, 12);
             btnAggiungi.Name = "btnAggiungi";
-            btnAggiungi.Size = new Size(97, 46);
+            btnAggiungi.Size = new Size(135, 46);
             btnAggiungi.TabIndex = 1;
             btnAggiungi.Text = "add";
             btnAggiungi.UseVisualStyleBackColor = true;
@@ -63,6 +64,8 @@
             Controls.Add(lstContatti);
             Name = "Form1";
             Text = "Rubrica";
+            FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 

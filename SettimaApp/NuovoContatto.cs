@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SettimaApp.strutture;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,16 @@ namespace SettimaApp
 {
     public partial class NuovoContatto : Form
     {
-        private ListBox destinazione;
-        public NuovoContatto(string titolo, ListBox dove)
+        private SchedaContatto contatto;
+        public NuovoContatto(string titolo, SchedaContatto contattoRicevuto)
         {
             InitializeComponent();
             this.Text = titolo;
-            destinazione = dove;
+            this.contatto = contattoRicevuto;
+            txtNome.Text = contatto.nome;
+            txtCognome.Text = contatto.cognome;
+            txtEmail.Text = contatto.email;
+            txtTelefono.Text = contatto.telefono;
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
@@ -27,7 +32,10 @@ namespace SettimaApp
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            destinazione.Items.Add("nuovo contatto");
+            contatto.nome = txtNome.Text;
+            contatto.cognome = txtCognome.Text;
+            contatto.email = txtEmail.Text;
+            contatto.telefono = txtTelefono.Text;
             this.Close();
         }
     }
