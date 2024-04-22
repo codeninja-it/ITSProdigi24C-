@@ -8,37 +8,23 @@ namespace SettimaApp.strutture
 {
     public class SchedaContatto
     {
-        public string nome = "";
-        public string cognome = "";
-        public string email = "";
-        public string telefono = "";
+        public string nome { get; set; } = "";
+        public string cognome { get; set; } = "";
+        public string email { get; set; } = "";
+        public string telefono { get; set; } = "";
+        public DateTime creazione { get; set; } = DateTime.Now;
+        public DateTime modifica { get; set; } = DateTime.Now;
+
+        public string nomeCompleto => $"{nome} {cognome}";
 
         public SchedaContatto()
         { 
         
         }
 
-        public SchedaContatto(string nome, string cognome, string email, string telefono)
-        {
-            this.nome = nome;
-            this.cognome = cognome;
-            this.email = email;
-            this.telefono = telefono;
-        }
-
-        public SchedaContatto(string riga)
-        {
-            string[] pezzi = riga.Split('\t');
-            this.nome = pezzi[0];
-            this.cognome = pezzi[1];
-            this.email = pezzi[2];
-            this.telefono = pezzi[3];
-        }
-
         public override string ToString()
         {
-            return $"{nome}\t{cognome}\t{email}\t{telefono}";
+            return $"{nome} {cognome}";
         }
-
     }
 }

@@ -36,6 +36,7 @@ namespace SettimaApp
             contatto.cognome = txtCognome.Text;
             contatto.email = txtEmail.Text;
             contatto.telefono = txtTelefono.Text;
+            contatto.modifica = DateTime.Now;
             this.Close();
         }
     }

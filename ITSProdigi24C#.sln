@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuintaApp", "QuintaApp\Quin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SestaApp", "SestaApp\SestaApp.csproj", "{B889B955-6A7C-468C-8257-C7A8192F6345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettimaApp", "SettimaApp\SettimaApp.csproj", "{37DCD12A-5C83-443F-A043-492C908F57D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettimaApp", "SettimaApp\SettimaApp.csproj", "{37DCD12A-5C83-443F-A043-492C908F57D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OttavaApp", "OttavaApp\OttavaApp.csproj", "{DDBA055A-85FA-48C8-B46A-D5908FD0FDD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{37DCD12A-5C83-443F-A043-492C908F57D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37DCD12A-5C83-443F-A043-492C908F57D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37DCD12A-5C83-443F-A043-492C908F57D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBA055A-85FA-48C8-B46A-D5908FD0FDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBA055A-85FA-48C8-B46A-D5908FD0FDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBA055A-85FA-48C8-B46A-D5908FD0FDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBA055A-85FA-48C8-B46A-D5908FD0FDD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

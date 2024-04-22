@@ -17,7 +17,7 @@ namespace SettimaApp.strutture
         {
             this.nome = nome;
             contatti = new List<SchedaContatto>();
-            if (File.Exists($"{nome}.csv"))
+            if (File.Exists($"{nome}.json"))
             {
                 Apri();
             }
@@ -26,23 +26,14 @@ namespace SettimaApp.strutture
         // "{this.nome}.txt"
         public void Salva()
         {
-            string buffer = "";
-            foreach(SchedaContatto singolo in contatti)
-            {
-                buffer += $"{singolo}\n";
-            }
-            File.WriteAllText($"{this.nome}.csv", buffer);
+            string buffer = JsonSerializer.Serialize(this.contatti);
+            File.WriteAllText($"{this.nome}.json", buffer);
         }
 
         public void Apri()
         {
-            string buffer = File.ReadAllText($"{this.nome}.csv");
-            buffer = buffer.Trim();
-            string[] righe = buffer.Split('\n');
-            foreach(string riga in righe)
-            {
-                contatti.Add( new SchedaContatto(riga) );
-            }
+            string buffer = File.ReadAllText($"{this.nome}.json");
+            this.contatti = JsonSerializer.Deserialize< List<SchedaContatto> >(buffer);
         }
     }
 }
