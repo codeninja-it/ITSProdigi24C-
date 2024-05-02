@@ -28,32 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            lstProdotti = new ListBox();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             mnuNuovo = new ToolStripMenuItem();
             mnuApri = new ToolStripMenuItem();
             mnuSalva = new ToolStripMenuItem();
             mnuEsci = new ToolStripMenuItem();
+            prodottiToolStripMenuItem = new ToolStripMenuItem();
+            mnuAggiungiProdotto = new ToolStripMenuItem();
+            mnuModificaProdotto = new ToolStripMenuItem();
+            mnuCancellaProdotto = new ToolStripMenuItem();
             mnuHelp = new ToolStripMenuItem();
             dlgApri = new OpenFileDialog();
             dlgSalva = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // listBox1
+            // lstProdotti
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 32;
-            listBox1.Location = new Point(12, 70);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(776, 356);
-            listBox1.TabIndex = 0;
+            lstProdotti.FormattingEnabled = true;
+            lstProdotti.ItemHeight = 32;
+            lstProdotti.Location = new Point(12, 70);
+            lstProdotti.Name = "lstProdotti";
+            lstProdotti.SelectionMode = SelectionMode.MultiSimple;
+            lstProdotti.Size = new Size(776, 356);
+            lstProdotti.TabIndex = 0;
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, mnuHelp });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, prodottiToolStripMenuItem, mnuHelp });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 40);
@@ -95,6 +100,34 @@
             mnuEsci.Text = "Esci";
             mnuEsci.Click += mnuEsci_Click;
             // 
+            // prodottiToolStripMenuItem
+            // 
+            prodottiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuAggiungiProdotto, mnuModificaProdotto, mnuCancellaProdotto });
+            prodottiToolStripMenuItem.Name = "prodottiToolStripMenuItem";
+            prodottiToolStripMenuItem.Size = new Size(119, 36);
+            prodottiToolStripMenuItem.Text = "Prodotti";
+            // 
+            // mnuAggiungiProdotto
+            // 
+            mnuAggiungiProdotto.Name = "mnuAggiungiProdotto";
+            mnuAggiungiProdotto.Size = new Size(359, 44);
+            mnuAggiungiProdotto.Text = "Aggiungi";
+            mnuAggiungiProdotto.Click += mnuAggiungiProdotto_Click;
+            // 
+            // mnuModificaProdotto
+            // 
+            mnuModificaProdotto.Name = "mnuModificaProdotto";
+            mnuModificaProdotto.Size = new Size(359, 44);
+            mnuModificaProdotto.Text = "Modifica";
+            mnuModificaProdotto.Click += mnuModificaProdotto_Click;
+            // 
+            // mnuCancellaProdotto
+            // 
+            mnuCancellaProdotto.Name = "mnuCancellaProdotto";
+            mnuCancellaProdotto.Size = new Size(359, 44);
+            mnuCancellaProdotto.Text = "Cancella";
+            mnuCancellaProdotto.Click += mnuCancellaProdotto_Click;
+            // 
             // mnuHelp
             // 
             mnuHelp.Name = "mnuHelp";
@@ -114,7 +147,7 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listBox1);
+            Controls.Add(lstProdotti);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
@@ -127,7 +160,7 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox lstProdotti;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem mnuNuovo;
@@ -137,5 +170,9 @@
         private ToolStripMenuItem mnuHelp;
         private OpenFileDialog dlgApri;
         private SaveFileDialog dlgSalva;
+        private ToolStripMenuItem prodottiToolStripMenuItem;
+        private ToolStripMenuItem mnuAggiungiProdotto;
+        private ToolStripMenuItem mnuModificaProdotto;
+        private ToolStripMenuItem mnuCancellaProdotto;
     }
 }
