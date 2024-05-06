@@ -8,7 +8,11 @@ namespace OttavaApp.strutture
 {
     public class Categoria : CampiCondivisi
     {
-        public int idCategoria { get; set; }
+        public uint idCategoria { get; set; } = 1;
         public string categoria { get; set; }
+        public override string ToString()
+        {
+            return this.categoria;
+        }
     }
 }

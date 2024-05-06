@@ -85,6 +85,7 @@
             lstCategorie.ItemHeight = 32;
             lstCategorie.Location = new Point(210, 102);
             lstCategorie.Name = "lstCategorie";
+            lstCategorie.SelectionMode = SelectionMode.MultiSimple;
             lstCategorie.Size = new Size(585, 340);
             lstCategorie.TabIndex = 4;
             // 

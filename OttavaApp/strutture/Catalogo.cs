@@ -22,10 +22,10 @@ namespace OttavaApp.strutture
             prodotti.Add(prodotto);
         }
 
-        public int IdMassimo(Func<Categoria, int> SceltaUtente)
+        public uint IdMassimo(Func<Categoria, uint> SceltaUtente)
         {
             // metodo classico
-            int ultimoId = 0;
+            uint ultimoId = 0;
             foreach (Categoria singola in categorie)
             {
                 if (SceltaUtente(singola) > ultimoId)
@@ -38,12 +38,12 @@ namespace OttavaApp.strutture
 
         public void AddCategoria(Categoria categoria)
         {
-            int nuovoId = IdMassimo(elemento => elemento.idCategoria) + 1;
+            uint nuovoId = IdMassimo(elemento => elemento.idCategoria) + 1;
 
             // metodo nuovo
             nuovoId = categorie.Max(elemento => elemento.idCategoria) + 1;
 
-            categoria.idCategoria = categorie.Count + 1;
+            categoria.idCategoria = (uint)(categorie.Count + 1);
             categorie.Add(categoria);
         }
 

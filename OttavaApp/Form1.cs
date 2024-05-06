@@ -61,6 +61,7 @@ namespace OttavaApp
         private void mnuAggiungiProdotto_Click(object sender, EventArgs e)
         {
             FrmProdotto nuovaFinestra = new FrmProdotto();
+            nuovaFinestra.categorie = catalogoAperto.categorie;
             nuovaFinestra.ShowDialog();
             // dopo che ha scelto, continuiamo
             if (nuovaFinestra.prodotto != null)
@@ -89,12 +90,25 @@ namespace OttavaApp
 
         private void mnuModificaProdotto_Click(object sender, EventArgs e)
         {
-            foreach(Prodotto selezionato in lstProdotti.SelectedItems)
+            foreach (Prodotto selezionato in lstProdotti.SelectedItems)
             {
                 FrmProdotto nuovaFinestra = new FrmProdotto();
+                nuovaFinestra.categorie = catalogoAperto.categorie;
                 nuovaFinestra.prodotto = selezionato;
                 nuovaFinestra.Show();
             }
+        }
+
+        private void mnuCategorie_Click(object sender, EventArgs e)
+        {
+            (new FrmCategorie(catalogoAperto)).ShowDialog();
+
+        }
+
+        private void mnuHTML_Click(object sender, EventArgs e)
+        {
+            // crea un file .htm per ogni prodotto + 1 file htm per ogni categoria
+            // creando i link per la navigazione nel sito statico
         }
     }
 }

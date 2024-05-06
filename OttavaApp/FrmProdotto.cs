@@ -14,6 +14,7 @@ namespace OttavaApp
     public partial class FrmProdotto : Form
     {
         public Prodotto prodotto { get; set; }
+        public List<Categoria> categorie { get; set; }
         public FrmProdotto()
         {
             InitializeComponent();
@@ -42,8 +43,20 @@ namespace OttavaApp
 
         private void FrmProdotto_Shown(object sender, EventArgs e)
         {
+            // imposto gli attributi
             txtNome.Text = this.prodotto.nome;
             numPrezzo.Value = (decimal)this.prodotto.prezzo;
+            // carico la lista delle categorie
+            lstCategorie.Items.Clear();
+            foreach (Categoria singola in categorie)
+            {
+                lstCategorie.Items.Add(singola);
+                // imposto le categorie selezionate
+                if (this.prodotto.categorie.Contains(singola.idCategoria))
+                {
+                    lstCategorie.SelectedItems.Add(singola);
+                }
+            }
         }
     }
 }
