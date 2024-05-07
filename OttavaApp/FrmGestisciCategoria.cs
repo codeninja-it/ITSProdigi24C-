@@ -29,8 +29,9 @@ namespace OttavaApp
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-           selezionata.categoria = txtCategoria.Text;
-           this.Close();
+            selezionata.categoria = txtCategoria.Text;
+            selezionata.descrizione = txtDescrizione.Text;
+            this.Close();
         }
     }
 }

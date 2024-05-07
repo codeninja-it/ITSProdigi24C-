@@ -36,6 +36,8 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            txtDescrizione = new TextBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)numPrezzo).BeginInit();
             SuspendLayout();
             // 
@@ -83,10 +85,10 @@
             lstCategorie.FormattingEnabled = true;
             lstCategorie.IntegralHeight = false;
             lstCategorie.ItemHeight = 32;
-            lstCategorie.Location = new Point(210, 102);
+            lstCategorie.Location = new Point(210, 309);
             lstCategorie.Name = "lstCategorie";
             lstCategorie.SelectionMode = SelectionMode.MultiSimple;
-            lstCategorie.Size = new Size(585, 340);
+            lstCategorie.Size = new Size(585, 133);
             lstCategorie.TabIndex = 4;
             // 
             // label1
@@ -110,17 +112,37 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(20, 102);
+            label3.Location = new Point(14, 309);
             label3.Name = "label3";
             label3.Size = new Size(117, 32);
             label3.TabIndex = 7;
             label3.Text = "Categorie";
+            // 
+            // txtDescrizione
+            // 
+            txtDescrizione.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtDescrizione.Location = new Point(210, 102);
+            txtDescrizione.Multiline = true;
+            txtDescrizione.Name = "txtDescrizione";
+            txtDescrizione.Size = new Size(585, 201);
+            txtDescrizione.TabIndex = 8;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(20, 105);
+            label4.Name = "label4";
+            label4.Size = new Size(137, 32);
+            label4.TabIndex = 9;
+            label4.Text = "Descrizione";
             // 
             // FrmProdotto
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(807, 511);
+            Controls.Add(label4);
+            Controls.Add(txtDescrizione);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -147,5 +169,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private TextBox txtDescrizione;
+        private Label label4;
     }
 }

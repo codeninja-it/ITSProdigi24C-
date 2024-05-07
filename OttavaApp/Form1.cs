@@ -27,7 +27,8 @@ namespace OttavaApp
 
         private void mnuNuovo_Click(object sender, EventArgs e)
         {
-
+            catalogoAperto = new Catalogo();
+            catalogoAperto.MostraProdotti(lstProdotti);
         }
 
         private void mnuApri_Click(object sender, EventArgs e)
@@ -93,9 +94,9 @@ namespace OttavaApp
             foreach (Prodotto selezionato in lstProdotti.SelectedItems)
             {
                 FrmProdotto nuovaFinestra = new FrmProdotto();
-                nuovaFinestra.categorie = catalogoAperto.categorie;
-                nuovaFinestra.prodotto = selezionato;
-                nuovaFinestra.Show();
+				nuovaFinestra.categorie = catalogoAperto.categorie;
+				nuovaFinestra.prodotto = selezionato;
+				nuovaFinestra.Show(); 
             }
         }
 
@@ -109,6 +110,24 @@ namespace OttavaApp
         {
             // crea un file .htm per ogni prodotto + 1 file htm per ogni categoria
             // creando i link per la navigazione nel sito statico
+            string pathCatalogo = catalogoAperto.nome;
+            Directory.CreateDirectory(pathCatalogo);
+            foreach (Categoria categoria in catalogoAperto.categorie)
+            {
+                // creo la pagina di categoria
+                File.WriteAllText(Path.Combine(pathCatalogo, $"{categoria.categoria}.htm"), "");
+
+                // per ogni prodotto
+                string pathCategoria = Path.Combine(pathCatalogo, categoria.categoria);
+                Directory.CreateDirectory(pathCategoria);
+                foreach(Prodotto prodotto in catalogoAperto.prodotti.Where(x => x.categorie.Contains(categoria.idCategoria)))
+                {
+                    // creo la pagina di prodotto dentr alla categoria
+                    File.WriteAllText(Path.Combine(pathCategoria, $"{prodotto.nome}.htm"), "");
+                }
+            }
+            File.WriteAllText(Path.Combine(pathCatalogo, "index.htm"), "");
+            MessageBox.Show("Esportazione terminata con successo!", "Esporta HTML", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

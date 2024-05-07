@@ -19,6 +19,7 @@ namespace OttavaApp
         {
             InitializeComponent();
             prodotto = new Prodotto();
+            
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace OttavaApp
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-
+            this.prodotto.descrizione = txtDescrizione.Text;
             this.prodotto.nome = txtNome.Text;
             this.prodotto.prezzo = (double)numPrezzo.Value;
             this.prodotto.categorie.Clear();
@@ -46,6 +47,7 @@ namespace OttavaApp
             // imposto gli attributi
             txtNome.Text = this.prodotto.nome;
             numPrezzo.Value = (decimal)this.prodotto.prezzo;
+            txtDescrizione.Text = this.prodotto.descrizione;
             // carico la lista delle categorie
             lstCategorie.Items.Clear();
             foreach (Categoria singola in categorie)

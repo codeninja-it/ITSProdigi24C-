@@ -9,6 +9,7 @@ namespace OttavaApp.strutture
 {
     public class Catalogo : CampiCondivisi
     {
+        public string nome { get; set; } = "";
         public List<Prodotto> prodotti { get; set; }
         public List<Categoria> categorie { get; set; }
 
@@ -55,6 +56,7 @@ namespace OttavaApp.strutture
 
         public void Salva(string percorso)
         {
+            nome = Path.GetFileNameWithoutExtension(percorso);
             string buffer = JsonSerializer.Serialize(this);
             File.WriteAllText(percorso, buffer);
         }

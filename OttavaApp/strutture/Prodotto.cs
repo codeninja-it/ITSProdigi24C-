@@ -10,6 +10,7 @@ namespace OttavaApp.strutture
     {
         public int idProdotto { get; set; }
         public string nome { get; set; }
+        public string descrizione { get; set; }
         public double prezzo { get; set; }
         public List<uint> categorie { get; set; } = new List<uint>();
 
