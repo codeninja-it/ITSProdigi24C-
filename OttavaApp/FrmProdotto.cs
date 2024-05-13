@@ -19,7 +19,7 @@ namespace OttavaApp
         {
             InitializeComponent();
             prodotto = new Prodotto();
-            
+
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
@@ -34,6 +34,15 @@ namespace OttavaApp
             this.prodotto.descrizione = txtDescrizione.Text;
             this.prodotto.nome = txtNome.Text;
             this.prodotto.prezzo = (double)numPrezzo.Value;
+
+            // gestione dell'immagine [collegamento]
+            this.prodotto.immagine = txtImmagine.Text;
+            // gestione dell'immagine [inclusione]
+            byte[] contenuto = File.ReadAllBytes(txtImmagine.Text);
+            string immagineBase64 = Convert.ToBase64String(contenuto);
+            this.prodotto.immagine = immagineBase64;
+
+
             this.prodotto.categorie.Clear();
             foreach (Categoria singola in lstCategorie.SelectedItems)
             {
@@ -58,6 +67,17 @@ namespace OttavaApp
                 {
                     lstCategorie.SelectedItems.Add(singola);
                 }
+            }
+        }
+
+        private void btnImmagine_Click(object sender, EventArgs e)
+        {
+            DialogResult risultato = dlgImmagine.ShowDialog();
+            if(risultato == DialogResult.OK)
+            {
+                string pathImmagine = dlgImmagine.FileName;
+                // collego il file al prodotto
+                txtImmagine.Text = pathImmagine;
             }
         }
     }

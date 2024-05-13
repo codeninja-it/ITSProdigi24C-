@@ -12,6 +12,7 @@ namespace OttavaApp.strutture
         public string nome { get; set; } = "";
         public string descrizione { get; set; } = "";
         public double prezzo { get; set; }
+        public string immagine { get; set; }
         public List<uint> categorie { get; set; } = new List<uint>();
 
         public string ToLink(string categoria)
@@ -24,6 +25,7 @@ namespace OttavaApp.strutture
             return File.ReadAllText(Path.Combine("templates", "prodotto.htm"))
                         .Replace("[nome]", this.nome)
                         .Replace("[categoria]", categoria.categoria)
+                        .Replace("[immagine]", immagine)
                         .Replace("[descrizione]", this.descrizione.Replace("\r\n", "<br>"))
                         .Replace("[prezzo]", this.prezzo.ToString("N2"));
         }

@@ -12,10 +12,12 @@ namespace OttavaApp.strutture
         public string nome { get; set; } = "";
         public List<Prodotto> prodotti { get; set; }
         public List<Categoria> categorie { get; set; }
+        public List<Immagine> immagini { get; set; } 
 
         public Catalogo() { 
             prodotti = new List<Prodotto>();
             categorie = new List<Categoria>();
+            immagini = new List<Immagine>();
         }
 
         public void AddProdotto(Prodotto prodotto)
