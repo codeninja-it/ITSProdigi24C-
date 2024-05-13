@@ -19,6 +19,7 @@ namespace OttavaApp
             InitializeComponent();
             selezionata = daModficare;
             txtCategoria.Text = selezionata.categoria;
+            txtDescrizione.Text = selezionata.descrizione;
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)

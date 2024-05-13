@@ -13,12 +13,20 @@ namespace OttavaApp.strutture
         public string motto { get; set; } = "";
         public string descrizione { get; set; } = "";
 
-        public string ToHTML()
+        public string ToHTML(List<Prodotto> presenti)
         {
-			return File.ReadAllText(Path.Combine("templates", "categoria.htm"))
+            List<string> links = new List<string>();
+            foreach(Prodotto singolo in presenti)
+            {
+                links.Add(singolo.ToLink(categoria));
+            }
+            string linkAiProdotti = String.Join("", links);
+
+			return File.ReadAllText( Path.Combine("templates", "categoria.htm") )
 								   .Replace("[nome]", this.categoria)
 								   .Replace("[descrizione]", this.descrizione.Replace("\r\n", "<br>") )
 								   .Replace("[motto]", this.motto)
+                                   .Replace("[prodotti]", linkAiProdotti)
 								   .Replace("[quando]", this.creazione.ToString("dd/MM/yyyy"));
 		}
 

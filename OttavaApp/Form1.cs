@@ -115,20 +115,29 @@ namespace OttavaApp
             // catalogo1/
             foreach (Categoria categoria in catalogoAperto.categorie)
             {
+                // controllo quali prodotti contiene
+                List<Prodotto> prodottiPresenti = catalogoAperto
+                                                    .prodotti.
+                                                    Where(x => x.categorie.Contains(categoria.idCategoria)).ToList();
                 // creo la pagina di categoria -> /catalogo1/vestiti.htm
-               
-                File.WriteAllText(Path.Combine(pathCatalogo, $"{categoria.categoria}.htm"), categoria.ToHTML() );
+                File.WriteAllText(
+                                    Path.Combine(pathCatalogo, $"{categoria.categoria}.htm"), 
+                                    categoria.ToHTML(prodottiPresenti)
+                                 );
 
                 // per ogni prodotto
                 string pathCategoria = Path.Combine(pathCatalogo, categoria.categoria);
                 Directory.CreateDirectory(pathCategoria);
                 // /catalogo1/vestiti/
-                List<Prodotto> selezionati = catalogoAperto.prodotti.Where(x => x.categorie.Contains(categoria.idCategoria)).ToList();
-                foreach(Prodotto prodotto in selezionati)
+                
+                foreach(Prodotto prodotto in prodottiPresenti)
                 {
                     // creo la pagina di prodotto dentr alla categoria
                     // catalogo1/vestiti/cappello.htm
-                    File.WriteAllText(Path.Combine(pathCategoria, $"{prodotto.nome}.htm"), "");
+                    File.WriteAllText(
+                                        Path.Combine(pathCategoria, $"{prodotto.nome}.htm"), 
+                                        prodotto.ToHTML(categoria)
+                                     );
                 }
             }
             File.WriteAllText(Path.Combine(pathCatalogo, "index.htm"), "");
