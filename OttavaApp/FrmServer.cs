@@ -27,15 +27,24 @@ namespace OttavaApp
             {
                 HttpListenerContext client = server.GetContext();
                 client.Response.ContentType = "text/html";
+                string risposta = "";
+                byte[] pacchetto = null;
                 switch (client.Request.RawUrl)
                 {
                     case "/calzini": //categoria calzini
-                        
+                        client.Response.StatusCode = (int)HttpStatusCode.OK;
+                        risposta = "<html><body><h1>Calzini</h1></body></html>";
+                        pacchetto = Encoding.UTF8.GetBytes(risposta);
+                        client.Response.OutputStream.Write(pacchetto);
+                        client.Response.Close();
                         break;
 
                     default: //404
-                        client.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        
+                        client.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                        risposta = $"<html><body>Non trovato<br>{client.Request.RawUrl}</body></html>";
+                        pacchetto = Encoding.UTF8.GetBytes(risposta);
+                        client.Response.OutputStream.Write(pacchetto);
+                        client.Response.OutputStream.Close();
                         break;
                 }
                 
