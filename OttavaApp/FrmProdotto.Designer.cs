@@ -38,17 +38,16 @@
             label3 = new Label();
             txtDescrizione = new TextBox();
             label4 = new Label();
-            txtImmagine = new TextBox();
             label5 = new Label();
-            btnImmagine = new Button();
             dlgImmagine = new OpenFileDialog();
+            lstImmagini = new ListBox();
             ((System.ComponentModel.ISupportInitialize)numPrezzo).BeginInit();
             SuspendLayout();
             // 
             // btnAnnulla
             // 
             btnAnnulla.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAnnulla.Location = new Point(751, 647);
+            btnAnnulla.Location = new Point(651, 727);
             btnAnnulla.Name = "btnAnnulla";
             btnAnnulla.Size = new Size(150, 46);
             btnAnnulla.TabIndex = 0;
@@ -59,7 +58,7 @@
             // btnSalva
             // 
             btnSalva.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalva.Location = new Point(595, 647);
+            btnSalva.Location = new Point(495, 727);
             btnSalva.Name = "btnSalva";
             btnSalva.Size = new Size(150, 46);
             btnSalva.TabIndex = 1;
@@ -72,7 +71,7 @@
             txtNome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtNome.Location = new Point(210, 12);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(691, 39);
+            txtNome.Size = new Size(591, 39);
             txtNome.TabIndex = 2;
             // 
             // numPrezzo
@@ -80,7 +79,7 @@
             numPrezzo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             numPrezzo.Location = new Point(210, 57);
             numPrezzo.Name = "numPrezzo";
-            numPrezzo.Size = new Size(691, 39);
+            numPrezzo.Size = new Size(591, 39);
             numPrezzo.TabIndex = 3;
             // 
             // lstCategorie
@@ -89,10 +88,10 @@
             lstCategorie.FormattingEnabled = true;
             lstCategorie.IntegralHeight = false;
             lstCategorie.ItemHeight = 32;
-            lstCategorie.Location = new Point(210, 309);
+            lstCategorie.Location = new Point(210, 458);
             lstCategorie.Name = "lstCategorie";
             lstCategorie.SelectionMode = SelectionMode.MultiSimple;
-            lstCategorie.Size = new Size(691, 327);
+            lstCategorie.Size = new Size(591, 258);
             lstCategorie.TabIndex = 4;
             // 
             // label1
@@ -116,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(14, 309);
+            label3.Location = new Point(12, 458);
             label3.Name = "label3";
             label3.Size = new Size(117, 32);
             label3.TabIndex = 7;
@@ -128,7 +127,7 @@
             txtDescrizione.Location = new Point(210, 102);
             txtDescrizione.Multiline = true;
             txtDescrizione.Name = "txtDescrizione";
-            txtDescrizione.Size = new Size(691, 154);
+            txtDescrizione.Size = new Size(591, 154);
             txtDescrizione.TabIndex = 8;
             // 
             // label4
@@ -140,14 +139,6 @@
             label4.TabIndex = 9;
             label4.Text = "Descrizione";
             // 
-            // txtImmagine
-            // 
-            txtImmagine.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtImmagine.Location = new Point(210, 264);
-            txtImmagine.Name = "txtImmagine";
-            txtImmagine.Size = new Size(605, 39);
-            txtImmagine.TabIndex = 10;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -157,17 +148,6 @@
             label5.TabIndex = 11;
             label5.Text = "Immagine";
             // 
-            // btnImmagine
-            // 
-            btnImmagine.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnImmagine.Location = new Point(821, 264);
-            btnImmagine.Name = "btnImmagine";
-            btnImmagine.Size = new Size(80, 39);
-            btnImmagine.TabIndex = 12;
-            btnImmagine.Text = "...";
-            btnImmagine.UseVisualStyleBackColor = true;
-            btnImmagine.Click += btnImmagine_Click;
-            // 
             // dlgImmagine
             // 
             dlgImmagine.DefaultExt = "jpg";
@@ -175,14 +155,24 @@
             dlgImmagine.Filter = "Immagine JPG|*.jpg|Immagine GIF|*.gif|Tutti i files|*.*";
             dlgImmagine.Title = "Scegli immagine prodotto";
             // 
+            // lstImmagini
+            // 
+            lstImmagini.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lstImmagini.FormattingEnabled = true;
+            lstImmagini.IntegralHeight = false;
+            lstImmagini.ItemHeight = 32;
+            lstImmagini.Location = new Point(210, 262);
+            lstImmagini.Name = "lstImmagini";
+            lstImmagini.Size = new Size(591, 190);
+            lstImmagini.TabIndex = 12;
+            // 
             // FrmProdotto
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(913, 705);
-            Controls.Add(btnImmagine);
+            ClientSize = new Size(813, 785);
+            Controls.Add(lstImmagini);
             Controls.Add(label5);
-            Controls.Add(txtImmagine);
             Controls.Add(label4);
             Controls.Add(txtDescrizione);
             Controls.Add(label3);
@@ -213,9 +203,8 @@
         private Label label3;
         private TextBox txtDescrizione;
         private Label label4;
-        private TextBox txtImmagine;
         private Label label5;
-        private Button btnImmagine;
         private OpenFileDialog dlgImmagine;
+        private ListBox lstImmagini;
     }
 }

@@ -8,9 +8,9 @@ namespace OttavaApp.strutture
 {
     public class Immagine
     {
-        public Immagine(string nome, string base64) { 
+        public Immagine(string nome, string immagine) { 
             this.nome = nome;
-            this.immagine = base64;
+            this.immagine = immagine;
         }
         public string nome { get; set; }
         public string immagine { get; set; }
@@ -22,7 +22,8 @@ namespace OttavaApp.strutture
 
         public override string ToString()
         {
-            return nome;
+            int dimkb = (int)((immagine.Length / 1.33) / 1000);
+            return $"{nome}\t{dimkb}Kb";
         }
     }
 }

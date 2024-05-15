@@ -15,11 +15,11 @@ namespace OttavaApp
     {
         public Prodotto prodotto { get; set; }
         public List<Categoria> categorie { get; set; }
+        public List<Immagine> immagini { get; set; }
         public FrmProdotto()
         {
             InitializeComponent();
             prodotto = new Prodotto();
-
         }
 
         private void btnAnnulla_Click(object sender, EventArgs e)
@@ -35,14 +35,12 @@ namespace OttavaApp
             this.prodotto.nome = txtNome.Text;
             this.prodotto.prezzo = (double)numPrezzo.Value;
 
-            if(txtImmagine.Text != "")
+            if(lstImmagini.SelectedItem != null)
             {
-                // gestione dell'immagine [collegamento]
-                this.prodotto.immagine = txtImmagine.Text;
-                // gestione dell'immagine [inclusione]
-                byte[] contenuto = File.ReadAllBytes( txtImmagine.Text );
-                string immagineBase64 = Convert.ToBase64String(contenuto);
-                this.prodotto.immagine = immagineBase64;
+                this.prodotto.immagine = ((Immagine)lstImmagini.SelectedItem).nome;
+            } else
+            {
+                this.prodotto.immagine = "";
             }
 
             this.prodotto.categorie.Clear();
@@ -70,17 +68,17 @@ namespace OttavaApp
                     lstCategorie.SelectedItems.Add(singola);
                 }
             }
-        }
-
-        private void btnImmagine_Click(object sender, EventArgs e)
-        {
-            DialogResult risultato = dlgImmagine.ShowDialog();
-            if(risultato == DialogResult.OK)
+            // carico la lista delle immagini
+            lstImmagini.Items.Clear();
+            foreach(Immagine singola in immagini)
             {
-                string pathImmagine = dlgImmagine.FileName;
-                // collego il file al prodotto
-                txtImmagine.Text = pathImmagine;
+                lstImmagini.Items.Add(singola);
+                if(singola.nome == prodotto.immagine)
+                {
+                    lstImmagini.SelectedItem = singola;
+                }
             }
         }
+
     }
 }

@@ -63,6 +63,7 @@ namespace OttavaApp
         {
             FrmProdotto nuovaFinestra = new FrmProdotto();
             nuovaFinestra.categorie = catalogoAperto.categorie;
+            nuovaFinestra.immagini = catalogoAperto.immagini;
             nuovaFinestra.ShowDialog();
             // dopo che ha scelto, continuiamo
             if (nuovaFinestra.prodotto != null)
@@ -94,9 +95,10 @@ namespace OttavaApp
             foreach (Prodotto selezionato in lstProdotti.SelectedItems)
             {
                 FrmProdotto nuovaFinestra = new FrmProdotto();
-				nuovaFinestra.categorie = catalogoAperto.categorie;
-				nuovaFinestra.prodotto = selezionato;
-				nuovaFinestra.Show(); 
+                nuovaFinestra.categorie = catalogoAperto.categorie;
+                nuovaFinestra.immagini = catalogoAperto.immagini;
+                nuovaFinestra.prodotto = selezionato;
+                nuovaFinestra.Show();
             }
         }
 
@@ -122,7 +124,7 @@ namespace OttavaApp
                                                     Where(x => x.categorie.Contains(categoria.idCategoria)).ToList();
                 // creo la pagina di categoria -> /catalogo1/vestiti.htm
                 File.WriteAllText(
-                                    Path.Combine(pathCatalogo, $"{categoria.categoria}.htm"), 
+                                    Path.Combine(pathCatalogo, $"{categoria.categoria}.htm"),
                                     categoria.ToHTML(prodottiPresenti)
                                  );
 
@@ -130,19 +132,25 @@ namespace OttavaApp
                 string pathCategoria = Path.Combine(pathCatalogo, categoria.categoria);
                 Directory.CreateDirectory(pathCategoria);
                 // /catalogo1/vestiti/
-                
-                foreach(Prodotto prodotto in prodottiPresenti)
+
+                foreach (Prodotto prodotto in prodottiPresenti)
                 {
                     // creo la pagina di prodotto dentr alla categoria
                     // catalogo1/vestiti/cappello.htm
                     File.WriteAllText(
-                                        Path.Combine(pathCategoria, $"{prodotto.nome}.htm"), 
-                                        prodotto.ToHTML(categoria)
+                                        Path.Combine(pathCategoria, $"{prodotto.nome}.htm"),
+                                        prodotto.ToHTML(categoria, catalogoAperto.immagini)
                                      );
                 }
             }
             File.WriteAllText(Path.Combine(pathCatalogo, "index.htm"), "");
             MessageBox.Show("Esportazione terminata con successo!", "Esporta HTML", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void mnuImmagini_Click(object sender, EventArgs e)
+        {
+            FrmImmagini nuova = new(catalogoAperto);
+            nuova.ShowDialog();
         }
     }
 }

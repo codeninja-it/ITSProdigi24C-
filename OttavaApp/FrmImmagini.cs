@@ -18,9 +18,15 @@ namespace OttavaApp
         {
             InitializeComponent();
             attuale = aperto;
+            AggiornaLista();
         }
 
         private void FrmImmagini_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AggiornaLista()
         {
             lstImmagini.Items.Clear();
             foreach (Immagine singola in attuale.immagini)
@@ -31,7 +37,7 @@ namespace OttavaApp
 
         private void mnuAggiungi_Click(object sender, EventArgs e)
         {
-            if(dlgImmagini.ShowDialog() == DialogResult.OK)
+            if (dlgImmagini.ShowDialog() == DialogResult.OK)
             {
                 Immagine nuova = new Immagine(
                     Path.GetFileNameWithoutExtension(dlgImmagini.FileName),
@@ -41,7 +47,28 @@ namespace OttavaApp
                                              )
                     )
                 );
-                attuale.immagini.Add( nuova );
+                attuale.immagini.Add(nuova);
+                AggiornaLista();
+            }
+        }
+
+        private void mnuCancella_Click(object sender, EventArgs e)
+        {
+            if (lstImmagini.SelectedItem != null)
+            {
+                attuale.immagini.Remove((Immagine)lstImmagini.SelectedItem);
+                AggiornaLista();
+            }
+        }
+
+        private void mnuSostituisci_Click(object sender, EventArgs e)
+        {
+            if(lstImmagini.SelectedItem != null && dlgImmagini.ShowDialog() == DialogResult.OK)
+            {
+                Immagine daModificare = (Immagine)lstImmagini.SelectedItem;
+                daModificare.nome = Path.GetFileNameWithoutExtension(dlgImmagini.FileName);
+                daModificare.immagine = Convert.ToBase64String( File.ReadAllBytes(dlgImmagini.FileName) );
+                AggiornaLista();
             }
         }
     }

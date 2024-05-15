@@ -40,11 +40,11 @@
             mnuAggiungiProdotto = new ToolStripMenuItem();
             mnuModificaProdotto = new ToolStripMenuItem();
             mnuCancellaProdotto = new ToolStripMenuItem();
+            mnuImmagini = new ToolStripMenuItem();
             mnuCategorie = new ToolStripMenuItem();
             mnuHelp = new ToolStripMenuItem();
             dlgApri = new OpenFileDialog();
             dlgSalva = new SaveFileDialog();
-            mnuImmagini = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,35 +78,35 @@
             // mnuNuovo
             // 
             mnuNuovo.Name = "mnuNuovo";
-            mnuNuovo.Size = new Size(359, 44);
+            mnuNuovo.Size = new Size(295, 44);
             mnuNuovo.Text = "Nuovo";
             mnuNuovo.Click += mnuNuovo_Click;
             // 
             // mnuApri
             // 
             mnuApri.Name = "mnuApri";
-            mnuApri.Size = new Size(359, 44);
+            mnuApri.Size = new Size(295, 44);
             mnuApri.Text = "Apri";
             mnuApri.Click += mnuApri_Click;
             // 
             // mnuSalva
             // 
             mnuSalva.Name = "mnuSalva";
-            mnuSalva.Size = new Size(359, 44);
+            mnuSalva.Size = new Size(295, 44);
             mnuSalva.Text = "Salva";
             mnuSalva.Click += mnuSalva_Click;
             // 
             // mnuHTML
             // 
             mnuHTML.Name = "mnuHTML";
-            mnuHTML.Size = new Size(359, 44);
+            mnuHTML.Size = new Size(295, 44);
             mnuHTML.Text = "Esporta HTML";
             mnuHTML.Click += mnuHTML_Click;
             // 
             // mnuEsci
             // 
             mnuEsci.Name = "mnuEsci";
-            mnuEsci.Size = new Size(359, 44);
+            mnuEsci.Size = new Size(295, 44);
             mnuEsci.Text = "Esci";
             mnuEsci.Click += mnuEsci_Click;
             // 
@@ -138,6 +138,13 @@
             mnuCancellaProdotto.Text = "Cancella";
             mnuCancellaProdotto.Click += mnuCancellaProdotto_Click;
             // 
+            // mnuImmagini
+            // 
+            mnuImmagini.Name = "mnuImmagini";
+            mnuImmagini.Size = new Size(134, 38);
+            mnuImmagini.Text = "Immagini";
+            mnuImmagini.Click += mnuImmagini_Click;
+            // 
             // mnuCategorie
             // 
             mnuCategorie.Name = "mnuCategorie";
@@ -158,12 +165,6 @@
             // dlgSalva
             // 
             dlgSalva.FileOk += dlgSalva_FileOk;
-            // 
-            // mnuImmagini
-            // 
-            mnuImmagini.Name = "mnuImmagini";
-            mnuImmagini.Size = new Size(134, 38);
-            mnuImmagini.Text = "Immagini";
             // 
             // Form1
             // 

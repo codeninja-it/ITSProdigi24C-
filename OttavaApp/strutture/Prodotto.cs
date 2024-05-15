@@ -20,12 +20,14 @@ namespace OttavaApp.strutture
             return $"<a class='prodotto' href='{categoria}/{nome}.htm'>{nome} &euro;{prezzo:N2}</a>";
         }
 
-        public string ToHTML(Categoria categoria)
+        public string ToHTML(Categoria categoria, List<Immagine> immagini)
         {
+            Immagine immagineProdotto = immagini.FirstOrDefault(x => x.nome == this.immagine);
+            string versioneTestuale = immagineProdotto == null ? "" : immagineProdotto.ToHTML();
             return File.ReadAllText(Path.Combine("templates", "prodotto.htm"))
                         .Replace("[nome]", this.nome)
                         .Replace("[categoria]", categoria.categoria)
-                        .Replace("[immagine]", immagine)
+                        .Replace("[immagine]", versioneTestuale)
                         .Replace("[descrizione]", this.descrizione.Replace("\r\n", "<br>"))
                         .Replace("[prezzo]", this.prezzo.ToString("N2"));
         }

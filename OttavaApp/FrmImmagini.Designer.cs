@@ -59,12 +59,14 @@
             mnuSostituisci.Name = "mnuSostituisci";
             mnuSostituisci.Size = new Size(140, 38);
             mnuSostituisci.Text = "Sostituisci";
+            mnuSostituisci.Click += mnuSostituisci_Click;
             // 
             // mnuCancella
             // 
             mnuCancella.Name = "mnuCancella";
             mnuCancella.Size = new Size(123, 38);
             mnuCancella.Text = "Cancella";
+            mnuCancella.Click += mnuCancella_Click;
             // 
             // dlgImmagini
             // 
