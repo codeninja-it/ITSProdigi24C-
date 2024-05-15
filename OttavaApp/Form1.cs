@@ -102,8 +102,9 @@ namespace OttavaApp
 
         private void mnuCategorie_Click(object sender, EventArgs e)
         {
-            (new FrmCategorie(catalogoAperto)).ShowDialog();
-
+            FrmCategorie nuova = new FrmCategorie(catalogoAperto);
+            nuova.ShowDialog();
+            nuova.Dispose();
         }
 
         private void mnuHTML_Click(object sender, EventArgs e)

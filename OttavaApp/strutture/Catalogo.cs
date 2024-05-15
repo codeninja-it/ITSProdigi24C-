@@ -14,7 +14,7 @@ namespace OttavaApp.strutture
         public List<Categoria> categorie { get; set; }
         public List<Immagine> immagini { get; set; } 
 
-        public Catalogo() { 
+        public Catalogo() {
             prodotti = new List<Prodotto>();
             categorie = new List<Categoria>();
             immagini = new List<Immagine>();

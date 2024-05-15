@@ -35,13 +35,15 @@ namespace OttavaApp
             this.prodotto.nome = txtNome.Text;
             this.prodotto.prezzo = (double)numPrezzo.Value;
 
-            // gestione dell'immagine [collegamento]
-            this.prodotto.immagine = txtImmagine.Text;
-            // gestione dell'immagine [inclusione]
-            byte[] contenuto = File.ReadAllBytes(txtImmagine.Text);
-            string immagineBase64 = Convert.ToBase64String(contenuto);
-            this.prodotto.immagine = immagineBase64;
-
+            if(txtImmagine.Text != "")
+            {
+                // gestione dell'immagine [collegamento]
+                this.prodotto.immagine = txtImmagine.Text;
+                // gestione dell'immagine [inclusione]
+                byte[] contenuto = File.ReadAllBytes( txtImmagine.Text );
+                string immagineBase64 = Convert.ToBase64String(contenuto);
+                this.prodotto.immagine = immagineBase64;
+            }
 
             this.prodotto.categorie.Clear();
             foreach (Categoria singola in lstCategorie.SelectedItems)

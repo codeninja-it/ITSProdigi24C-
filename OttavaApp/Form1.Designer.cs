@@ -34,6 +34,7 @@
             mnuNuovo = new ToolStripMenuItem();
             mnuApri = new ToolStripMenuItem();
             mnuSalva = new ToolStripMenuItem();
+            mnuHTML = new ToolStripMenuItem();
             mnuEsci = new ToolStripMenuItem();
             prodottiToolStripMenuItem = new ToolStripMenuItem();
             mnuAggiungiProdotto = new ToolStripMenuItem();
@@ -43,7 +44,7 @@
             mnuHelp = new ToolStripMenuItem();
             dlgApri = new OpenFileDialog();
             dlgSalva = new SaveFileDialog();
-            mnuHTML = new ToolStripMenuItem();
+            mnuImmagini = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, prodottiToolStripMenuItem, mnuCategorie, mnuHelp });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, prodottiToolStripMenuItem, mnuImmagini, mnuCategorie, mnuHelp });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 42);
@@ -94,6 +95,13 @@
             mnuSalva.Size = new Size(359, 44);
             mnuSalva.Text = "Salva";
             mnuSalva.Click += mnuSalva_Click;
+            // 
+            // mnuHTML
+            // 
+            mnuHTML.Name = "mnuHTML";
+            mnuHTML.Size = new Size(359, 44);
+            mnuHTML.Text = "Esporta HTML";
+            mnuHTML.Click += mnuHTML_Click;
             // 
             // mnuEsci
             // 
@@ -151,12 +159,11 @@
             // 
             dlgSalva.FileOk += dlgSalva_FileOk;
             // 
-            // mnuHTML
+            // mnuImmagini
             // 
-            mnuHTML.Name = "mnuHTML";
-            mnuHTML.Size = new Size(359, 44);
-            mnuHTML.Text = "Esporta HTML";
-            mnuHTML.Click += mnuHTML_Click;
+            mnuImmagini.Name = "mnuImmagini";
+            mnuImmagini.Size = new Size(134, 38);
+            mnuImmagini.Text = "Immagini";
             // 
             // Form1
             // 
@@ -192,5 +199,6 @@
         private ToolStripMenuItem mnuCancellaProdotto;
         private ToolStripMenuItem mnuCategorie;
         private ToolStripMenuItem mnuHTML;
+        private ToolStripMenuItem mnuImmagini;
     }
 }
