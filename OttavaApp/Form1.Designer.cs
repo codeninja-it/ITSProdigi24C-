@@ -42,6 +42,7 @@
             mnuCancellaProdotto = new ToolStripMenuItem();
             mnuImmagini = new ToolStripMenuItem();
             mnuCategorie = new ToolStripMenuItem();
+            mnuServer = new ToolStripMenuItem();
             mnuHelp = new ToolStripMenuItem();
             dlgApri = new OpenFileDialog();
             dlgSalva = new SaveFileDialog();
@@ -61,7 +62,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, prodottiToolStripMenuItem, mnuImmagini, mnuCategorie, mnuHelp });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, prodottiToolStripMenuItem, mnuImmagini, mnuCategorie, mnuServer, mnuHelp });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 42);
@@ -152,6 +153,13 @@
             mnuCategorie.Text = "Categorie";
             mnuCategorie.Click += mnuCategorie_Click;
             // 
+            // mnuServer
+            // 
+            mnuServer.Name = "mnuServer";
+            mnuServer.Size = new Size(101, 38);
+            mnuServer.Text = "Server";
+            mnuServer.Click += mnuServer_Click;
+            // 
             // mnuHelp
             // 
             mnuHelp.Name = "mnuHelp";
@@ -201,5 +209,6 @@
         private ToolStripMenuItem mnuCategorie;
         private ToolStripMenuItem mnuHTML;
         private ToolStripMenuItem mnuImmagini;
+        private ToolStripMenuItem mnuServer;
     }
 }

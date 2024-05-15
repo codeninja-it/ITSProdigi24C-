@@ -152,5 +152,11 @@ namespace OttavaApp
             FrmImmagini nuova = new(catalogoAperto);
             nuova.ShowDialog();
         }
+
+        private void mnuServer_Click(object sender, EventArgs e)
+        {
+            FrmServer nuovo = new(catalogoAperto);
+            nuovo.ShowDialog();
+        }
     }
 }
