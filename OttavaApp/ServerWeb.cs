@@ -1,40 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using OttavaApp.strutture;
+using System;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace OttavaApp
+namespace OttavaApp;
+
+public class ServerWeb
 {
-    public class ServerWeb
+    private HttpListener linea;
+    private bool inAscolto = false;
+    private TextBox txtRisultato;
+    private Catalogo inUso;
+
+    public ServerWeb(TextBox campoTesto, Catalogo aperto)
     {
-        private HttpListener linea;
-        private TextBox txtRisultato;
+        txtRisultato = campoTesto;
+        linea = new HttpListener();
+        linea.Prefixes.Add("http://127.0.0.1:12345/");
+        inUso = aperto;
+    }
 
-        public ServerWeb(TextBox campoTesto)
+    public void Stop()
+    {
+        inAscolto = false;
+    }
+
+    public async void Inizia()
+    {
+        txtRisultato.Text = "";
+        linea.Start();
+        inAscolto = true;
+        while (inAscolto)
         {
-            txtRisultato = campoTesto;
-            linea = new HttpListener();
-            linea.Prefixes.Add("http://127.0.0.1:12345/");
+            HttpListenerContext chiamata = await linea.GetContextAsync();
+            txtRisultato.Text += $"{DateTime.Now}\t{chiamata.Request.RawUrl}\n";
+            chiamata.Response.OutputStream.Close();
         }
-
-        public void Stop()
-        {
-            linea.Stop();
-        }
-
-        public async void Inizia()
-        {
-            linea.Start();
-            while (linea.IsListening)
-            {
-                HttpListenerContext chiamata = linea.GetContext();
-                txtRisultato.Text += $"{DateTime.Now}\t{chiamata.Request.RawUrl}\n";
-            }
-        }
-
-
-
     }
 }

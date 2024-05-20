@@ -21,7 +21,7 @@ namespace OttavaApp
             InitializeComponent();
             aperto = catalogo;
 
-            server = new ServerWeb(txtBuffer);
+            server = new ServerWeb(txtBuffer, catalogo);
 
             //server = new HttpListener();
             //server.Prefixes.Add("http://127.0.0.1:12345/");
