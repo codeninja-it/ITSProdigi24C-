@@ -27,27 +27,31 @@ namespace OttavaApp
             {
                 HttpListenerContext client = server.GetContext();
                 client.Response.ContentType = "text/html";
-                string risposta = "";
+                string buffer = $"<html><body><h1>{aperto.nome}</h1></body></html>";
                 byte[] pacchetto = null;
-                switch (client.Request.RawUrl)
-                {
-                    case "/calzini": //categoria calzini
-                        client.Response.StatusCode = (int)HttpStatusCode.OK;
-                        risposta = "<html><body><h1>Calzini</h1></body></html>";
-                        pacchetto = Encoding.UTF8.GetBytes(risposta);
-                        client.Response.OutputStream.Write(pacchetto);
-                        client.Response.Close();
-                        break;
+                // /[categoria]/[prodotto]/
+                string[] segmenti = client.Request.RawUrl.Split('/');
 
-                    default: //404
-                        client.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                        risposta = $"<html><body>Non trovato<br>{client.Request.RawUrl}</body></html>";
-                        pacchetto = Encoding.UTF8.GetBytes(risposta);
-                        client.Response.OutputStream.Write(pacchetto);
-                        client.Response.OutputStream.Close();
-                        break;
+                if(segmenti.Length == 2)
+                {
+                    string categoria = segmenti[1];
+                    Categoria selezionata = aperto.categorie
+                        .FirstOrDefault(x => x.categoria == categoria);
+                    if(selezionata != null)
+                    {
+                        buffer = selezionata.ToHTML(aperto.prodotti);
+                    }
+                } else if (segmenti.Length == 3)
+                {
+                    string categoria = segmenti[1];
+                    string prodotto = segmenti[2];
+                    Prodotto selezionato = aperto.prodotti.FirstOrDefault(x => x.nome == prodotto);
+                    Categoria selezionata = aperto.categorie.FirstOrDefault(x => x.categoria == categoria);
+                    buffer = selezionato.ToHTML(selezionata, aperto.immagini);
                 }
-                
+                pacchetto = Encoding.UTF8.GetBytes(buffer);
+                client.Response.OutputStream.Write(pacchetto);
+                client.Response.OutputStream.Close();
             }
 
         }

@@ -156,7 +156,7 @@ namespace OttavaApp
         private void mnuServer_Click(object sender, EventArgs e)
         {
             FrmServer nuovo = new(catalogoAperto);
-            nuovo.ShowDialog();
+            nuovo.Show();
         }
     }
 }
