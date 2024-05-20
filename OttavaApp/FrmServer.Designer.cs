@@ -29,16 +29,44 @@
         private void InitializeComponent()
         {
             txtBuffer = new TextBox();
+            menuStrip1 = new MenuStrip();
+            mnuAvvia = new ToolStripMenuItem();
+            mnuFerma = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // txtBuffer
             // 
             txtBuffer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtBuffer.Location = new Point(12, 12);
+            txtBuffer.Location = new Point(12, 109);
             txtBuffer.Multiline = true;
             txtBuffer.Name = "txtBuffer";
-            txtBuffer.Size = new Size(797, 643);
+            txtBuffer.Size = new Size(797, 546);
             txtBuffer.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(32, 32);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuAvvia, mnuFerma });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(821, 42);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuAvvia
+            // 
+            mnuAvvia.Name = "mnuAvvia";
+            mnuAvvia.Size = new Size(91, 38);
+            mnuAvvia.Text = "Avvia";
+            mnuAvvia.Click += mnuAvvia_Click;
+            // 
+            // mnuFerma
+            // 
+            mnuFerma.Name = "mnuFerma";
+            mnuFerma.Size = new Size(100, 38);
+            mnuFerma.Text = "Ferma";
+            mnuFerma.Click += mnuFerma_Click;
             // 
             // FrmServer
             // 
@@ -46,8 +74,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(821, 667);
             Controls.Add(txtBuffer);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "FrmServer";
             Text = "FrmServer";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -55,5 +87,8 @@
         #endregion
 
         private TextBox txtBuffer;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem mnuAvvia;
+        private ToolStripMenuItem mnuFerma;
     }
 }
