@@ -13,12 +13,15 @@ namespace OttavaApp.strutture
         public string motto { get; set; } = "";
         public string descrizione { get; set; } = "";
 
-        public string ToHTML(List<Prodotto> presenti)
+        public string ToHTML(List<Prodotto> presenti, bool online = false)
         {
             List<string> links = new List<string>();
             foreach(Prodotto singolo in presenti)
             {
-                links.Add(singolo.ToLink(categoria));
+                if(online)
+                    links.Add(singolo.ToLink());
+                else
+                    links.Add(singolo.ToLink(categoria));
             }
             string linkAiProdotti = String.Join("", links);
 

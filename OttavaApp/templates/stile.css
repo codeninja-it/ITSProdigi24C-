@@ -1,0 +1,9 @@
+﻿body {
+    background-color: antiquewhite;
+    font-family: sans-serif;
+}
+
+img {
+    width: 500px;
+    box-shadow: 5px 5px 5px #00000055;
+}

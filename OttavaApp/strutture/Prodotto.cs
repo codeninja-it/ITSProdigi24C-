@@ -15,9 +15,12 @@ namespace OttavaApp.strutture
         public string immagine { get; set; }
         public List<uint> categorie { get; set; } = new List<uint>();
 
-        public string ToLink(string categoria)
+        public string ToLink(string? categoria = null)
         {
-            return $"<a class='prodotto' href='{categoria}/{nome}.htm'>{nome} &euro;{prezzo:N2}</a>";
+            if (categoria == null)
+                return $"<a class='prodotto' href='{nome}/'>{nome} &euro;{prezzo:N2}</a>";
+            else
+                return $"<a class='prodotto' href='{categoria}/{nome}.htm'>{nome} &euro;{prezzo:N2}</a>";
         }
 
         public string ToHTML(Categoria categoria, List<Immagine> immagini)
