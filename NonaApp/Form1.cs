@@ -51,6 +51,33 @@ namespace NonaApp
             immagine.Save(btnApri.Text.Replace(".png", $".{da:N0}.{a:N0}.png"), ImageFormat.Png);
         }
 
+        private void CalcolaMedia(Bitmap immagine)
+        {
+            Bitmap sfuocata = new Bitmap(immagine.Width, immagine.Height);
+            for (int x = 1; x < immagine.Width - 1; x++)
+            {
+                for (int y = 1; y < immagine.Height - 1; y++)
+                {
+                    // recupero il centro
+                    Color centro = immagine.GetPixel(x, y);
+                    // ed i suoi vicini (destra e sotto)
+                    int somma = centro.R + 
+                                immagine.GetPixel(x - 1, y - 1).R + // top-left
+                                immagine.GetPixel(x, y - 1).R + // top
+                                immagine.GetPixel(x + 1, y - 1).R + // top-right
+                                immagine.GetPixel(x - 1, y).R + // left
+                                immagine.GetPixel(x + 1, y).R + // right
+                                immagine.GetPixel(x - 1, y + 1).R + // bottom-left
+                                immagine.GetPixel(x, y + 1).R + // bottom
+                                immagine.GetPixel(x + 1, y + 1).R; // bottom-right
+                    int media = somma / 9;
+                    Color medio = Color.FromArgb(255, media, media, media);
+                    sfuocata.SetPixel(x, y, medio);
+                }
+            }
+            sfuocata.Save(btnApri.Text.Replace(".png", ".media.png"), ImageFormat.Png);
+        }
+
         private void CalcolaBordi(Bitmap immagine)
         {
             Bitmap bordi = new Bitmap(immagine.Width, immagine.Height);
@@ -82,6 +109,7 @@ namespace NonaApp
             float bottom = trkHueStart.Value;
             float top = trkHueStop.Value;
             CalcolaTreshold(immagine, bottom, top);
+            CalcolaMedia(immagine);
             CalcolaBordi(immagine);
         }
 
