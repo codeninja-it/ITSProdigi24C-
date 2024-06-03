@@ -72,7 +72,15 @@ namespace NonaApp
                                 immagine.GetPixel(x + 1, y + 1).R; // bottom-right
                     int media = somma / 9;
                     Color medio = Color.FromArgb(255, media, media, media);
+                    sfuocata.SetPixel(x-1, y-1, medio);
+                    sfuocata.SetPixel(x-1, y, medio);
+                    sfuocata.SetPixel(x-1, y+1, medio);
+                    sfuocata.SetPixel(x, y-1, medio);
                     sfuocata.SetPixel(x, y, medio);
+                    sfuocata.SetPixel(x, y+1, medio);
+                    sfuocata.SetPixel(x+1, y-1, medio);
+                    sfuocata.SetPixel(x+1, y, medio);
+                    sfuocata.SetPixel(x+1, y+1, medio);
                 }
             }
             sfuocata.Save(btnApri.Text.Replace(".png", ".media.png"), ImageFormat.Png);
