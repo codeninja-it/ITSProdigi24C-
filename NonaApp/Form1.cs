@@ -51,6 +51,22 @@ namespace NonaApp
             immagine.Save(btnApri.Text.Replace(".png", $".{da:N0}.{a:N0}.png"), ImageFormat.Png);
         }
 
+        private bool[,] RecuperaMatrice(Bitmap immagine)
+        {
+            bool[,] risultato = new bool[immagine.Width, immagine.Height];
+            for(int x = 0; x < immagine.Width; x++)
+            {
+                for( int y = 0;y < immagine.Height; y++)
+                {
+                    bool muro = immagine.GetPixel(x, y) == Color.Black;
+                    risultato[x, y] = muro;
+                }
+            }
+            return risultato;
+        }
+
+
+
         private void CalcolaMedia(Bitmap immagine)
         {
             Bitmap sfuocata = new Bitmap(immagine.Width, immagine.Height);
@@ -119,6 +135,35 @@ namespace NonaApp
             CalcolaTreshold(immagine, bottom, top);
             CalcolaMedia(immagine);
             CalcolaBordi(immagine);
+            bool[,] muri = RecuperaMatrice(immagine);
+            List< List<Point> > poligoni = new List<List<Point>>();
+            List<Point> quadrato = new List<Point>();
+            quadrato.Add(new Point(0, 0));
+            quadrato.Add(new Point(0, 10));
+            quadrato.Add(new Point(10, 10));
+            quadrato.Add(new Point(10, 0));
+            quadrato.Add(new Point(0, 0));
+
+            poligoni.Add(quadrato);
+
+            poligoni.Clear();
+
+            IntercettaPoligoni(muri, poligoni);
+
+        }
+
+        public void IntercettaPoligoni(bool[,] muri, List<List<Point>> poligoni)
+        {
+            for(int x = 0; x < muri.GetLength(0); x++)
+            {
+                for (int y = 0; y < muri.GetLength(1); y++)
+                {
+                    if (muri[x, y])
+                    {
+
+                    }
+                }
+            }
         }
 
         private void trkHueStart_Scroll(object sender, EventArgs e)
