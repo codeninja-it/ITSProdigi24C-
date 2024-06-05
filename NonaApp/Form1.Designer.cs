@@ -37,6 +37,7 @@
             lblHueStop = new Label();
             trkHueStop = new TrackBar();
             pctAnteprima = new PictureBox();
+            lstPoligoni = new ListBox();
             ((System.ComponentModel.ISupportInitialize)trkHueStart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trkHueStop).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pctAnteprima).BeginInit();
@@ -44,11 +45,10 @@
             // 
             // txtRisultato
             // 
-            txtRisultato.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtRisultato.Location = new Point(12, 64);
             txtRisultato.Multiline = true;
             txtRisultato.Name = "txtRisultato";
-            txtRisultato.Size = new Size(505, 476);
+            txtRisultato.Size = new Size(505, 161);
             txtRisultato.TabIndex = 0;
             // 
             // btnApri
@@ -64,7 +64,7 @@
             // btnCalcola
             // 
             btnCalcola.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCalcola.Location = new Point(12, 764);
+            btnCalcola.Location = new Point(12, 910);
             btnCalcola.Name = "btnCalcola";
             btnCalcola.Size = new Size(505, 46);
             btnCalcola.TabIndex = 2;
@@ -80,7 +80,7 @@
             // trkHueStart
             // 
             trkHueStart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            trkHueStart.Location = new Point(163, 564);
+            trkHueStart.Location = new Point(163, 710);
             trkHueStart.Maximum = 360;
             trkHueStart.Name = "trkHueStart";
             trkHueStart.Size = new Size(354, 90);
@@ -93,7 +93,7 @@
             // 
             lblHueStart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblHueStart.AutoSize = true;
-            lblHueStart.Location = new Point(12, 564);
+            lblHueStart.Location = new Point(12, 710);
             lblHueStart.Name = "lblHueStart";
             lblHueStart.Size = new Size(43, 32);
             lblHueStart.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             lblHueStop.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblHueStop.AutoSize = true;
-            lblHueStop.Location = new Point(12, 660);
+            lblHueStop.Location = new Point(12, 806);
             lblHueStop.Name = "lblHueStop";
             lblHueStop.Size = new Size(29, 32);
             lblHueStop.TabIndex = 6;
@@ -112,7 +112,7 @@
             // trkHueStop
             // 
             trkHueStop.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            trkHueStop.Location = new Point(163, 660);
+            trkHueStop.Location = new Point(163, 806);
             trkHueStop.Maximum = 360;
             trkHueStop.Name = "trkHueStop";
             trkHueStop.Size = new Size(354, 90);
@@ -126,16 +126,30 @@
             pctAnteprima.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pctAnteprima.Location = new Point(523, 12);
             pctAnteprima.Name = "pctAnteprima";
-            pctAnteprima.Size = new Size(729, 798);
+            pctAnteprima.Size = new Size(645, 944);
             pctAnteprima.SizeMode = PictureBoxSizeMode.StretchImage;
             pctAnteprima.TabIndex = 7;
             pctAnteprima.TabStop = false;
+            // 
+            // lstPoligoni
+            // 
+            lstPoligoni.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lstPoligoni.FormattingEnabled = true;
+            lstPoligoni.IntegralHeight = false;
+            lstPoligoni.ItemHeight = 32;
+            lstPoligoni.Location = new Point(12, 231);
+            lstPoligoni.Name = "lstPoligoni";
+            lstPoligoni.SelectionMode = SelectionMode.MultiSimple;
+            lstPoligoni.Size = new Size(505, 461);
+            lstPoligoni.TabIndex = 8;
+            lstPoligoni.SelectedIndexChanged += lstPoligoni_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 822);
+            ClientSize = new Size(1180, 968);
+            Controls.Add(lstPoligoni);
             Controls.Add(pctAnteprima);
             Controls.Add(lblHueStop);
             Controls.Add(trkHueStop);
@@ -164,5 +178,6 @@
         private Label lblHueStop;
         private TrackBar trkHueStop;
         private PictureBox pctAnteprima;
+        private ListBox lstPoligoni;
     }
 }

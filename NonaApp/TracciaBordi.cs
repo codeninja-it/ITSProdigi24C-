@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,23 @@ namespace NonaApp
             }
             public int X { get; set; }
             public int Y { get; set; }
+
+            public bool UgualeA(XY p2)
+            {
+                return X == p2.X && Y == p2.Y;
+            }
+
+            public double DistanzaDa(XY p2)
+            {
+                int dX = X - p2.X;
+                int dY = Y - p2.Y;
+                return Math.Sqrt(dX*dX + dY*dY);
+            }
+
+            public override string ToString()
+            {
+                return $"[{X} {Y}]";
+            }
         }
 
         enum Direzione { 
@@ -60,7 +78,7 @@ namespace NonaApp
 
         private bool Analizza(int x, int y, XY[] visitati, Direzione direzione = Direzione.Left)
         {
-            // se sono fuori perimetro esco
+            // se sono fuori dall'immagine esco
             if(x < 0 || y < 0 || x >= matrice.GetLength(0) || y >= matrice.GetLength(1))
                 return false;
 
@@ -168,6 +186,85 @@ namespace NonaApp
             return nuovo;
         }
 
-        
+        // eliminazione del peduncolo
+        public List<XY[]> Pulisci()
+        {
+            List<XY[]> puliti = new List<XY[]>();
+            foreach (XY[] poligono in poligoni)
+            {
+                poligono.Reverse();
+                XY primo = poligono[0];
+                XY[] nuovoTracciato = AggiungiVertice(new XY[0], primo);
+                for (int i = 1; i < poligono.Length; i++)
+                {
+                    XY vertice = poligono[i];
+                    nuovoTracciato = AggiungiVertice(nuovoTracciato, vertice);
+                    if (vertice.X == primo.X && vertice.Y == primo.Y)
+                        break;
+                }
+                if (nuovoTracciato[nuovoTracciato.Length - 1].UgualeA(nuovoTracciato[0])){
+                    puliti.Add(nuovoTracciato);
+                }
+            }
+            poligoni = puliti;
+            return puliti;
+        }
+
+        // Semplificazione Douglas Peucker basata sulla distanza
+        public List<XY[]> SemplificaDP(double distanza, List<XY[]> collezione)
+        {
+            List<XY[]> risultato = new List<XY[]>();
+            foreach (XY[] poligono in collezione)
+            {
+                XY[] semplificato = new XY[0];
+                XY controllo = poligono[0];
+                for (int i = 1; i < poligono.Length; i++)
+                {
+                    XY daControllare = poligono[i];
+                    if (controllo.DistanzaDa(daControllare) > distanza)
+                    {
+                        semplificato = AggiungiVertice(semplificato, daControllare);
+                        controllo = daControllare;
+                    }
+                }
+                if (semplificato.Length > 1)
+                {
+                    risultato.Add(semplificato);
+                }
+            }
+            return risultato;
+        }
+
+        public XY[] AccodaBuffer(XY[] vecchio, XY punto)
+        {
+            XY[] nuovo = new XY[vecchio.Length];
+            for (int i = 1; i < vecchio.Length; i++)
+            {
+                nuovo[i-1] = vecchio[i];
+            }
+            nuovo[vecchio.Length - 1] = punto;
+            return nuovo;
+        }
+
+        public List<XY[]> ARIMA(int grado, List<XY[]> collezione)
+        {
+            List<XY[]> risultato = new List<XY[]>();
+            foreach (XY[] poligono in collezione)
+            {
+                XY[] smussato = new XY[poligono.Length];
+                XY[] buffer = new XY[grado];
+                for (int i = 0; i < poligono.Length; i++)
+                {
+                    buffer = AccodaBuffer(buffer, poligono[i]);
+                    smussato[i] = new XY( 
+                                            (int)buffer.Where(e => e != null).Average(e => e.X),
+                                            (int)buffer.Where(e => e != null).Average(e => e.Y)
+                                        );
+                }
+                
+                risultato.Add(smussato);
+            }
+            return risultato;
+        }
     }
 }
