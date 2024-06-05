@@ -58,8 +58,13 @@ namespace NonaApp
             {
                 for( int y = 0;y < immagine.Height; y++)
                 {
-                    bool muro = immagine.GetPixel(x, y) == Color.Black;
-                    risultato[x, y] = muro;
+                    if(immagine.GetPixel(x, y) == Color.Black)
+                    {
+                        risultato[x, y] = true;
+                    } else
+                    {
+                        risultato[x, y] = false;
+                    }
                 }
             }
             return risultato;
@@ -102,7 +107,33 @@ namespace NonaApp
             sfuocata.Save(btnApri.Text.Replace(".png", ".media.png"), ImageFormat.Png);
         }
 
-        private void CalcolaBordi(Bitmap immagine)
+        private bool[,] CalcolaMatrice(Bitmap immagine)
+        {
+            bool[,] bordi = new bool[immagine.Width, immagine.Height];
+            for (int x = 0; x < immagine.Width - 1; x++)
+            {
+                for (int y = 0; y < immagine.Height - 1; y++)
+                {
+                    // recupero il pixel
+                    Color analizzato = immagine.GetPixel(x, y);
+                    // ed i suoi vicini (destra e sotto)
+                    Color vicinoDX = immagine.GetPixel(x + 1, y);
+                    Color vicinoBT = immagine.GetPixel(x, y + 1);
+                    // se sono differenti
+                    if (analizzato.R != vicinoDX.R || analizzato.R != vicinoBT.R)
+                    {
+                        bordi[x, y] = true;
+                    }
+                    else
+                    {
+                        bordi[x, y] = false;
+                    }
+                }
+            }
+            return bordi;
+        }
+
+        private Bitmap CalcolaBordi(Bitmap immagine)
         {
             Bitmap bordi = new Bitmap(immagine.Width, immagine.Height);
             for(int x = 0;x < immagine.Width - 1; x++)
@@ -124,7 +155,8 @@ namespace NonaApp
                     }
                 }
             }
-            bordi.Save(btnApri.Text.Replace(".png", ".bordi.png"), ImageFormat.Png) ;
+            //bordi.Save(btnApri.Text.Replace(".png", ".bordi.png"), ImageFormat.Png) ;
+            return bordi;
         }
 
         private void btnCalcola_Click(object sender, EventArgs e)
@@ -133,37 +165,18 @@ namespace NonaApp
             float bottom = trkHueStart.Value;
             float top = trkHueStop.Value;
             CalcolaTreshold(immagine, bottom, top);
-            CalcolaMedia(immagine);
-            CalcolaBordi(immagine);
-            bool[,] muri = RecuperaMatrice(immagine);
-            List< List<Point> > poligoni = new List<List<Point>>();
-            List<Point> quadrato = new List<Point>();
-            quadrato.Add(new Point(0, 0));
-            quadrato.Add(new Point(0, 10));
-            quadrato.Add(new Point(10, 10));
-            quadrato.Add(new Point(10, 0));
-            quadrato.Add(new Point(0, 0));
+            //CalcolaMedia(immagine);
+            Bitmap bordi = CalcolaBordi(immagine);
+            pctAnteprima.Image = bordi;
+            bool[,] muri = CalcolaMatrice(immagine);
 
-            poligoni.Add(quadrato);
-
-            poligoni.Clear();
-
-            IntercettaPoligoni(muri, poligoni);
-
-        }
-
-        public void IntercettaPoligoni(bool[,] muri, List<List<Point>> poligoni)
-        {
-            for(int x = 0; x < muri.GetLength(0); x++)
+            TracciaBordi tracciatore = new(muri);
+            List<TracciaBordi.XY[]> poligoni = tracciatore.Scansiona();
+            foreach(TracciaBordi.XY[] singolo in poligoni)
             {
-                for (int y = 0; y < muri.GetLength(1); y++)
-                {
-                    if (muri[x, y])
-                    {
-
-                    }
-                }
+                txtRisultato.Text += "\r\npoly da " + singolo.Length + " vertici";
             }
+            pctAnteprima.Image = tracciatore.Disegna();
         }
 
         private void trkHueStart_Scroll(object sender, EventArgs e)
