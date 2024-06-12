@@ -15,12 +15,16 @@
 
             <Button 
                 x:Name="btnGPS" 
-                Text="GPS" Clicked="btnGPS_Clicked"  />
+                Text="GPS" Clicked="btnGPS_Clicked" />
 
             <Button 
                 x:Name="btnBussola" 
                 Text="Bussola" 
                 Clicked="btnBussola_Clicked" />
+
+            <Button x:Name="btnANAS" 
+                Text="Informazioni sul traffico" 
+                Clicked="btnANAS_Clicked" />
 
         </VerticalStackLayout>
     </ScrollView>

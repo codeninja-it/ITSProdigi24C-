@@ -18,6 +18,11 @@
         {
             Navigation.PushAsync(new BussolaPage());
         }
+
+        private void btnANAS_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AnasPage());
+        }
     }
 
 }

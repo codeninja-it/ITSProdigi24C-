@@ -62,6 +62,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="AnasPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="BussolaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
