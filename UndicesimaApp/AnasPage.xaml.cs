@@ -1,5 +1,8 @@
+using System.Drawing;
 using System.Net;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace UndicesimaApp;
 
@@ -12,7 +15,7 @@ public partial class AnasPage : ContentPage
 
     private async void btnCerca_Clicked(object sender, EventArgs e)
     {
-		Location? posizione = await Geolocation.GetLocationAsync();
+        Location? posizione = await Geolocation.GetLocationAsync();
         if (posizione != null)
         {
             HttpClient browser = new HttpClient();
@@ -21,8 +24,20 @@ public partial class AnasPage : ContentPage
             {
                 string flusso = await risposta.Content.ReadAsStringAsync();
                 RispostaAnas tutti = JsonSerializer.Deserialize<RispostaAnas>(flusso);
-                int perOggi = tutti.eventi.Count();
-                txtRisposta.Text = $"{perOggi} eventi previsti";
+                List<EventoAnas> ordinati = tutti.eventi
+                                                .OrderBy(x => x.Distanza(posizione.Latitude, posizione.Longitude))
+                                                .Take(10)
+                                                .ToList();
+                // tolgo i risultati precedenti
+                lstRisultati.Clear();
+                foreach (EventoAnas singolo in ordinati)
+                {
+                    Label nuova = new Label();
+                    nuova.Text = $"{singolo.des_compartimento}: {singolo.sigla_strada}\n{singolo.descrizione_causa}";
+                    nuova.BackgroundColor = Colors.Wheat;
+                    nuova.Padding = 5;
+                    lstRisultati.Add(nuova);
+                }
             }
         }
     }
