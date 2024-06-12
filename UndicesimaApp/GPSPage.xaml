@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UndicesimaApp.GPSPage"
+             Title="GPS">
+    <VerticalStackLayout Spacing="25" Margin="30,30">
+        <Label x:Name="txtLatitudine" Text="Lat: 0°" />
+        <Label x:Name="txtLongintudine" Text="Lon: 0°" />
+        <Label x:Name="txtAltitudine" Text="Alt: 0slm" />
+        <Label x:Name="txtDirezione" Text="Dir: 0°" />
+        <Label x:Name="txtVelocita" Text="Speed: 0ms" />
+        <Button x:Name="btnAttiva" Text="attiva" Clicked="btnAttiva_Clicked" />
+    </VerticalStackLayout>
+</ContentPage>

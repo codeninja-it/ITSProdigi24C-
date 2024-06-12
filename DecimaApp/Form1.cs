@@ -30,7 +30,7 @@ namespace DecimaApp
         }
 
         private Point PuntoMedio(Point nuovo)
-        {
+        {   
             // calcolo il nuovo Indice
             indice = (indice + 1) % trkBuffer.Value;
             buffer[indice] = nuovo;
