@@ -1,0 +1,22 @@
+﻿@page "/"
+@using DodicesimaApp.Data;
+@using DodicesimaApp.Componenti;
+@inject ECommerce ecom;
+
+<h1>Catalogo prodotti</h1>
+
+@foreach (Prodotto singolo in ecom.catalogo.prodotti)
+{
+    <PreviewProdotto prodotto="singolo" />
+}
+
+<p>Totale carrelo : &euro; @ecom.carrello.Totale() + iva</p>
+
+@code{
+
+    private void Aggiungi(Prodotto selezionato)
+    {
+        ecom.carrello.prodotti.Add(selezionato);
+    }
+
+}

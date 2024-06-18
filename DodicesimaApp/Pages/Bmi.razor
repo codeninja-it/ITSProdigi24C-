@@ -1,0 +1,24 @@
+﻿@page "/bmi"
+@using DodicesimaApp.Componenti;
+
+<h3>Calcolatrice Bmi</h3>
+
+<p>Benvenuto! usa i campi qui sotto per poter calcolare il tuo BMI!</p>
+    
+        <RisultatoBMI altezza="@altezza" peso="@peso" />
+        <RisultatoBMI altezza="@altezza" peso="@peso" />
+        <RisultatoBMI altezza="@altezza" peso="@peso" />
+
+<p>
+    <input type="number" @bind="peso" placeholder="il tuo peso in Kg!" class="form-control" />
+</p>
+<p>
+    <input type="number" @bind="altezza" placeholder="la tua altezza in metri" class="form-control" />
+</p>
+
+@code {
+
+    private double altezza;
+    private double peso;   
+
+}

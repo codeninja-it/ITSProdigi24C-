@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NonaApp", "NonaApp\NonaApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecimaApp", "DecimaApp\DecimaApp.csproj", "{8BC37502-A855-4582-8BF5-578FAC031CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndicesimaApp", "UndicesimaApp\UndicesimaApp.csproj", "{DDA82237-E32F-4DD4-B14E-CF74C75B4D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UndicesimaApp", "UndicesimaApp\UndicesimaApp.csproj", "{DDA82237-E32F-4DD4-B14E-CF74C75B4D51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DodicesimaApp", "DodicesimaApp\DodicesimaApp.csproj", "{7DBA048F-AB51-4665-95F2-154A73AE7174}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,12 @@ Global
 		{DDA82237-E32F-4DD4-B14E-CF74C75B4D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDA82237-E32F-4DD4-B14E-CF74C75B4D51}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDA82237-E32F-4DD4-B14E-CF74C75B4D51}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DBA048F-AB51-4665-95F2-154A73AE7174}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

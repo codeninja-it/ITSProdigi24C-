@@ -1,0 +1,17 @@
+﻿<p>@bmi = @peso / (@altezza * @altezza)</p>
+
+@code {
+    [Parameter]
+    public double altezza { get; set; }
+    [Parameter]
+    public double peso { get; set; }
+
+    private double bmi;
+
+    protected override void OnParametersSet()
+    {
+        bmi = peso / (altezza * altezza);
+        base.OnParametersSet();
+    }
+
+}
